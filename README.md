@@ -26,5 +26,7 @@ OR
 > `yay -Syu <package-name>`
 > * **⚠ Important Note:** To use `yay`, you need to have `yay` installed. Google the instructions it's not very difficult to install.
 
+##### To view packages installed, use the following command: `pacman -Qe`.
+
 ## How to create links to file for syncing purposes
 I have created one guide **[here](home/.config/fontconfig/README.md)**, it can be used to create the links. Just replace the file/ directory names but be careful because some config files have different file names for ***per user*** configs and ***system-wide*** configs.
