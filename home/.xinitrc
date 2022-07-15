@@ -60,7 +60,16 @@ xsetroot -cursor_name left_ptr
 picom --experimental-backend &
 discord --start-minimized &
 $HOME/.config/polybar/launch.sh
-exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file get reloaded whenever bspwm is reloaded)
+
+# display timeout
+xset s off &
+xset dpms 1800 1800 1800 & # 1800 secs = 30 mins
+xautolock -time 30 -locker slock -notify 30 &
+
+# enable numlock
+numlockx &
+
+exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file gets reloaded whenever bspwm is reloaded)
 
 ###  [ OTHER (Unused) ]  ###
 
