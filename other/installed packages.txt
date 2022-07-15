@@ -87,6 +87,7 @@ rofi 1.7.3-1
 rofimoji 5.4.0-3
 sed 4.8-1
 smartmontools 7.3-1
+starship 1.9.1-1
 subversion 1.14.1-6
 sudo 1.9.11.p3-1
 sxhkd 0.6.2-2

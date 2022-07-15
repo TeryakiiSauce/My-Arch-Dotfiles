@@ -9,11 +9,11 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Custom Aliases
-
-# cd to my GitHub repo 'home' dir
-alias rh="cd ~/Documents/GitHub/My-Arch-Dotfiles/home/ && echo 'Switched to Repo/home/'"
-
-# cd to my GitHub repo 'other' dir
-alias ro="cd ~/Documents/GitHub/My-Arch-Dotfiles/other/ && echo 'Switched to Repo/other/'"
-
+alias rr="cd ~/Documents/GitHub/My-Arch-Dotfiles/"       # cd to my GitHub main repo dir
+alias rh="cd ~/Documents/GitHub/My-Arch-Dotfiles/home/"  # cd to my GitHub repo 'home' dir
+alias ro="cd ~/Documents/GitHub/My-Arch-Dotfiles/other/" # cd to my GitHub repo 'other' dir
 # End of custom aliases
+
+# Other configurations
+eval "$(starship init bash)" # starship terminal prompt
+# End of other configurations
