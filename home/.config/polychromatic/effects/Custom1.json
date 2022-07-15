@@ -1,0 +1,43 @@
+{
+    "name": "Custom #1",
+    "type": 3,
+    "author": "",
+    "author_url": "",
+    "icon": "img/devices/display.svg",
+    "summary": "",
+    "map_device": "Razer BlackWidow V3",
+    "map_device_icon": "keyboard",
+    "map_graphic": "blackwidow_m_keys_en_GB.svg",
+    "map_cols": 22,
+    "map_rows": 6,
+    "save_format": 8,
+    "revision": 1,
+    "fps": 10,
+    "loop": true,
+    "frames": [
+        {
+            "0": {},
+            "1": {},
+            "2": {},
+            "3": {},
+            "4": {},
+            "5": {},
+            "6": {},
+            "7": {},
+            "8": {},
+            "9": {},
+            "10": {},
+            "11": {},
+            "12": {},
+            "13": {},
+            "14": {},
+            "15": {},
+            "16": {},
+            "17": {},
+            "18": {},
+            "19": {},
+            "20": {},
+            "21": {}
+        }
+    ]
+}
