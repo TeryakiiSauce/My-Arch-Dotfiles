@@ -16,7 +16,7 @@ alias gs="git status"                                                       # sh
 alias ga="git add . && echo \"All changes are now staged.\""                # add/stage all changed items using git
 alias gr="git restore --staged . && echo \"All changes are now unstaged.\"" # remove all staged items using git (use `grf` function to remove specfic file(s))
 alias gf="git fetch"                                                        # fetch changes using git
-alias gp="git push"                                                         # push changes to origin using git
+alias gp="git push && echo \"Changes have been pushed to origin.\""         # push changes to origin using git
 alias gl="git pull"                                                         # pull changes from origin using git
 # End of custom aliases
 
@@ -25,13 +25,12 @@ gc() {
     # function that acts like an alias to commit git changes
     # PARAM: message
     git commit -m "$1"
-    echo "Changes have been committed to origin."
+    echo "Changes have been committed locally."
 }
 
 grf() {
     # function that acts like an alias to remove specfic file(s) from staged items using git
     # NOTE: There is no autocomplete for this function as of yet, maybe if I can I'll do something about it
-    # PARAM: file(s) path(s)
     git restore --staged "$@"
     echo "Specified file(s) are now unstaged."
 }
