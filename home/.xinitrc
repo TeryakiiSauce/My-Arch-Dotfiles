@@ -69,6 +69,9 @@ xautolock -time 30 -locker slock -notify 30 &
 # enable numlock
 numlockx &
 
+# run steam
+steam -silent &
+
 exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file gets reloaded whenever bspwm is reloaded)
 
 ###  [ OTHER (Unused) ]  ###
