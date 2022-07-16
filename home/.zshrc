@@ -21,6 +21,7 @@ alias gr="git restore --staged . && echo \"All changes are now unstaged.\"" # re
 alias gf="git fetch"                                                        # fetch changes using git
 alias gp="git push"                                                         # push changes to origin using git
 alias gl="git pull"                                                         # pull changes from origin using git
+alias gu="gitui"                                                            # runs gitui tui client
 # End of custom aliases
 
 # Custom Functions
