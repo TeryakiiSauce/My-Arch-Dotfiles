@@ -25,7 +25,7 @@ gc() {
     # function that acts like an alias to commit git changes
     # PARAM: message
     git commit -m "$1"
-    echo "Changes have been committed locally."
+    echo "Changes have been committed locally. Enter 'gp' to push changes to origin."
 }
 
 grf() {
