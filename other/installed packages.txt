@@ -9,7 +9,6 @@ automake 1.16.5-1
 base 2-2
 binutils 2.38-6
 bison 3.8.2-4
-blender-3.2-bin 3.2.220704.9bb9a54a2aec-1
 bspwm 0.9.10-2
 cmake 3.23.2-2
 debtap 3.5.1-1
