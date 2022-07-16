@@ -1,3 +1,8 @@
+# Enable colors in prompt
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+# End of colors in prompt
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=50000
@@ -36,10 +41,19 @@ grf() {
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/teryakiisauce/.zshrc'
+# Basic auto/tab complete
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 autoload -Uz compinit
 compinit
+_comp_options+=(globdots) # Include hidden files.
+# End of auto/tab complete
 # End of lines added by compinstall
 
 # Other configurations
 eval "$(starship init zsh)" # starship terminal prompt
 # End of other configurations
+
+# Load zsh-syntax-highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+# End of zsh-syntax-highlighting
