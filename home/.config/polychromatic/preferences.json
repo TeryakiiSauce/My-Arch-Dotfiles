@@ -10,9 +10,9 @@
     "custom": {
         "dpi_stage_1": 800,
         "dpi_stage_2": 2000,
-        "dpi_stage_3": 6000,
-        "dpi_stage_4": 8000,
-        "dpi_stage_5": 9000,
+        "dpi_stage_3": 4000,
+        "dpi_stage_4": 5000,
+        "dpi_stage_5": 6000,
         "use_dpi_stages": true
     },
     "editor": {
