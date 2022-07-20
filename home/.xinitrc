@@ -59,6 +59,7 @@ xrandr -s 1920x1080 -r 144
 xsetroot -cursor_name left_ptr
 picom --experimental-backend &
 discord --start-minimized &
+xinput --set-prop 8 'libinput Accel Speed' -0.5 &
 $HOME/.config/polybar/launch.sh
 
 # display timeout
