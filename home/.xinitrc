@@ -60,6 +60,7 @@ xsetroot -cursor_name left_ptr
 picom --experimental-backend &
 discord --start-minimized &
 xinput --set-prop 8 'libinput Accel Speed' -0.5 &
+polychromatic-cli -v &
 $HOME/.config/polybar/launch.sh
 
 # display timeout
