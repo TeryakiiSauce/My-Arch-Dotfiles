@@ -57,10 +57,10 @@ fi
 nitrogen --restore &
 xrandr -s 1920x1080 -r 144
 xsetroot -cursor_name left_ptr
-picom --experimental-backend &
-discord --start-minimized &
-xinput --set-prop 8 'libinput Accel Speed' -0.5 &
-polychromatic-cli -v &
+#picom --experimental-backend &
+#discord --start-minimized &
+#xinput --set-prop 8 'libinput Accel Speed' -0.5 &
+#polychromatic-cli -v &
 $HOME/.config/polybar/launch.sh
 
 # display timeout
@@ -72,7 +72,7 @@ xautolock -time 30 -locker slock -notify 30 &
 numlockx &
 
 # run steam
-steam -silent &
+#steam -silent &
 
 exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file gets reloaded whenever bspwm is reloaded)
 
