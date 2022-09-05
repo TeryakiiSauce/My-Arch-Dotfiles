@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Script to enable or disable xinitrc
+# - When 'Enabled'  -> Uses BSPWM
+# - When 'Disabled' -> Uses GNOME
+
+if [[ $(ls -a ~ | grep -w .xinitrc) == '.xinitrc' ]]
+then
+	# If we are in BSPWM, change to GNOME
+	$(mv ~/.xinitrc ~/.gnome-gui)
+	echo "Window/ Display manager for next login is set to: GNOME"
+else
+	# If we are in GNOME, change to BSPWM
+	$(mv ~/.gnome-gui ~/.xinitrc)
+	echo "Window/ Display manager for next login is set to: BSPWM"
+fi
+
+echo ""
