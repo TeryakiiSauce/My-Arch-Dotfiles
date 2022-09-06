@@ -51,6 +51,11 @@ _comp_options+=(globdots) # Include hidden files.
 # End of auto/tab complete
 # End of lines added by compinstall
 
+# SPLASHSCREEN
+cat ~/Pictures/ASCII_art/'ahegao_face_(welcomeScreen).txt'
+echo "" # Empty line
+# End of Splashscreen
+
 # Other configurations
 eval "$(starship init zsh)" # starship terminal prompt
 # End of other configurations
