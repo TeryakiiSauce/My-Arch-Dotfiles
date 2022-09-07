@@ -54,22 +54,22 @@ fi
 ##                         ##
 #############################
 
-nitrogen --restore &
-xrandr -s 1920x1080 -r 144
-xsetroot -cursor_name left_ptr
+#nitrogen --restore &
+#xrandr -s 1920x1080 -r 144
+#xsetroot -cursor_name left_ptr
 #picom --experimental-backend &
 #discord --start-minimized &
 #xinput --set-prop 8 'libinput Accel Speed' -0.5 &
 #polychromatic-cli -v &
-$HOME/.config/polybar/launch.sh
+#$HOME/.config/polybar/launch.sh
 
 # display timeout
-xset s off &
-xset dpms 1800 1800 1800 & # 1800 secs = 30 mins
-xautolock -time 30 -locker slock -notify 30 &
+#xset s off &
+#xset dpms 1800 1800 1800 & # 1800 secs = 30 mins
+#xautolock -time 30 -locker slock -notify 30 &
 
 # enable numlock
-numlockx &
+#numlockx &
 
 # run steam
 #steam -silent &
