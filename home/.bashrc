@@ -44,4 +44,3 @@ echo "" # Empty line
 # Other configurations
 eval "$(starship init bash)" # starship terminal prompt
 # End of other configurations
-export GPG_TTY=$(tty)
