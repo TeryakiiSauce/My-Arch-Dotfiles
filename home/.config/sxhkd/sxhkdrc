@@ -20,7 +20,7 @@ super + Escape
 
 # Lockscreen
 super + x
-	betterlockscreen -l dimblur --off 60
+	betterlockscreen -l dimblur
 
 #
 # bspwm hotkeys
