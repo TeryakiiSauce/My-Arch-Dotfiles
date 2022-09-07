@@ -40,8 +40,7 @@ fi
 #imwheel &
 #discord --start-minimized & # This is run here because discord used to open each time I reload bspwm
 #lxsession &
-#exec bspwm # Runs ~/.config/bspwm/bspwmrc
-
+#exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file gets reloaded whenever bspwm is reloaded)
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &
@@ -74,7 +73,7 @@ fi
 # run steam
 #steam -silent &
 
-exec bspwm # Runs ~/.config/bspwm/bspwmrc (the config file gets reloaded whenever bspwm is reloaded)
+$HOME/.config/currentwm # To execute either bspwm or xfce4
 
 ###  [ OTHER (Unused) ]  ###
 

@@ -1,18 +1,15 @@
 #!/bin/bash
 
-# Script to enable or disable xinitrc
-# - When 'Enabled'  -> Uses BSPWM
-# - When 'Disabled' -> Uses GNOME
+# Script to switch between bspwm & xfce4 (using 'startx')
 
-if [[ $(ls -a ~ | grep -w .xinitrc) == '.xinitrc' ]]
+if [[ $(grep -i 'exec bspwm' ~/.config/currentwm) == 'exec bspwm' ]]
 then
-	# If we are in BSPWM, change to GNOME
-	$(mv ~/.xinitrc ~/.gnome-gui)
-	echo "Window/ Display manager for next login is set to: GNOME"
+	# If we are in BSPWM, switch to xfce4
+	$(sed -i 's/exec bspwm/startxfce4/g' ~/.config/currentwm)
+	echo "Window manager for next login is set to: xfce4"
 else
-	# If we are in GNOME, change to BSPWM
-	$(mv ~/.gnome-gui ~/.xinitrc)
-	echo "Window/ Display manager for next login is set to: BSPWM"
+	# If we are in xfce4, switch to BSPWM
+	$(sed -i 's/startxfce4/exec bspwm/g' ~/.config/currentwm)
+	echo "Window manager for next login is set to: BSPWM"
 fi
 
-echo ""
