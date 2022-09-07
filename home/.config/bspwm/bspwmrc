@@ -30,7 +30,9 @@ nitrogen --restore &
 xrandr -s 1920x1080 -r 144
 xsetroot -cursor_name left_ptr
 picom --experimental-backend &
-discord --start-minimized & # Moved to '~/.xinitrc' because discord gets reloaded each time bspwm is reloaded
+discord --start-minimized &
+xinput --set-prop 8 'libinput Accel Speed' -0.5 &
+polychromatic-cli -v &
 $HOME/.config/polybar/launch.sh
 
 # display timeout
@@ -44,8 +46,11 @@ numlockx &
 # run steam
 steam -silent &
 
-###  [ OTHER (Unused) ]  ###
 
+
+
+
+###  [ OTHER (Unused) ]  ###
 #lxsession &
 #imwheel &
 #setxkbmap us &
