@@ -1,3 +1,0 @@
-testing commit signing
-hello world
-signing should work now - aha :)
