@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Script to switch between bspwm & xfce4 (using 'startx')
+
+if [[ $(grep -i 'exec bspwm' ~/.config/currentwm) == 'exec bspwm' ]]
+then
+	# If we are in BSPWM, switch to xfce4
+	$(sed -i 's/exec bspwm/startxfce4/g' ~/.config/currentwm)
+	echo "Window manager for next login is set to: xfce4"
+else
+	# If we are in xfce4, switch to BSPWM
+	$(sed -i 's/startxfce4/exec bspwm/g' ~/.config/currentwm)
+	echo "Window manager for next login is set to: BSPWM"
+fi
+

@@ -38,8 +38,8 @@ grf() {
 # End of custom functions
 
 # SPLASHSCREEN
-cat ~/Pictures/ASCII_art/'ahegao_face_(welcomeScreen).txt'
-echo "" # Empty line
+#cat ~/Pictures/ASCII_art/'ahegao_face_(welcomeScreen).txt'
+#echo "" # Empty line
 
 # Other configurations
 eval "$(starship init bash)" # starship terminal prompt
