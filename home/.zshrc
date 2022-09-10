@@ -61,5 +61,5 @@ eval "$(starship init zsh)" # starship terminal prompt
 # End of other configurations
 
 # Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # 2>/dev/null
 # End of zsh-syntax-highlighting
