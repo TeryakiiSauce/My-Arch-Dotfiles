@@ -1,9 +1,9 @@
 #!/bin/bash
 
-user='teryakiisauce' # Edit this value
-
-# Edit the location path of the "My-Arch-Dotfiles" repo dir depending on your case. [Default: ~/Documents/GitHub/My-Arch-Dotfiles/]
-repo_dir='/home/'$user'/Documents/GitHub/My-Arch-Dotfiles/'
+# Edit the following values according to your case
+user='teryakiisauce' # Your Home Dir username
+home_dir=/home/$user
+repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
 
 #echo "Before you run the script make sure to stop & read it if you haven't and edit the repo's dir path in required"
 #sleep 5
@@ -22,37 +22,48 @@ echo ""
 echo "Proceeding to create symbolic links..."
 
 # 1. Home Dir links
-rm -rv /home/$user/.zshrc*
-cd /home/$user/ && ln -sfv $repo_dir'home/.zshrc' && usermod -s /bin/zsh $user
-rm -rv /home/$user/.bashrc*
-cd /home/$user/ && ln -sfv $repo_dir'home/.bashrc'
-rm -rv /home/$user/.gtkrc-2.0*
-cd /home/$user/ && ln -sfv $repo_dir'home/.gtkrc-2.0'
-rm -rv /home/$user/.xinitrc*
-cd /home/$user/ && ln -sfv $repo_dir'home/.xinitrc'
+homeDirContents=(".zshrc" ".bashrc" ".gtkrc-2.0" ".xinitrc")
+for content in ${homeDirContents[@]}; do
+	rm -rv $home_dir/$content*
+	ln -sfv $repo_dir/home/$content $home_dir/$content
+	chown -R $user:$user $home_dir/$content
+done
 
 # 2. Pictures Dir links
-cd /home/$user/ && mkdir Pictures/ # create the dir (just in case)
-trash-put -fv /home/$user/Pictures/'Anime Wallpapers'*
-cd /home/$user/Pictures/ && ln -sfv $repo_dir'home/Pictures/Anime Wallpapers/'
-trash-put -fv /home/$user/Pictures/ASCII_art*
-cd /home/$user/Pictures/ && ln -sfv $repo_dir'home/Pictures/ASCII_art/'
-trash-put -fv /home/$user/Pictures/Unused*
-cd /home/$user/Pictures/ && ln -sfv $repo_dir'home/Pictures/Unused/'
+mkdir $home_dir/Pictures # create the directory just in case
+picsDirContents=("Anime_Wallpapers" "ASCII_art" "Unused")
+for content in ${picsDirContents[@]}; do
+	trash-put -fv $home_dir/Pictures/$content*
+	ln -sfv $repo_dir/home/Pictures/$content $home_dir/Pictures/$content
+	chown -R $user:$user $home_dir/Pictures/$content
+done
 
 # 3. Documents Dir links
-cd /home/$user/ && mkdir Documents/ # create the dir (just in case)
-trash-put -fv /home/$user/Documents/Scripts*
-cd /home/$user/Documents/ && ln -sfv $repo_dir'home/Documents/Scripts/'
+mkdir $home_dir/Documents # create the directory just in case
+docsDirContents=("Scripts")
+for content in ${docsDirContents[@]}; do
+	trash-put -fv $home_dir/Documents/$content*
+	ln -sfv $repo_dir/home/Documents/$content $home_dir/Documents/$content
+	chown -R $user:$user $home_dir/Documents/$content
+done
 
 # 4. .local Dir links
-cd /home/$user/ && mkdir -p .local/share/ # create the dirs (just in case)
-rm -rv /home/$user/.local/share/rofimoji*
-cd /home/$user/.local/share/ && ln -sfv $repo_dir'home/.local/share/rofimoji/'
+mkdir -p $home_dir/.local/share # create the directory just in case
+loc_shareDirContents=("rofimoji")
+for content in ${loc_shareDirContents[@]}; do
+	rm -rv $home_dir/.local/share/$content*
+	ln -sfv $repo_dir/home/.local/share/$content $home_dir/.local/share/$content
+	chown -R $user:$user $home_dir/.local/share/$content
+done
 
 # 5. .config Dir links
-cd /home/$user/ && mkdir -p .config/ # create the dir (just in case)
-# TODO: use for loop instead for an optimized script
+mkdir -p $home_dir/.config # create the directory just in case
+configDirContents=("alacritty" "bspwm" "fontconfig" "gtk-2.0" "gtk3.0" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreen" "currentwm" "starship.toml")
+for content in ${configDirContents[@]}; do
+	rm -rv $home_dir/.config/$content*
+	ln -sfv $repo_dir/home/.config/$content $home_dir/.config/$content
+	chown -R $user:$user $home_dir/.config/$content
+done
 
 # Install yay if not found
 if [[ $(which yay) != '/usr/bin/yay' ]]; then
@@ -73,4 +84,4 @@ fi
 #echo "yay -Syu --noconfirm && yay -S --noconfirm betterlockscreen picom-jonaburg-git"
 #echo "[OPTIONAL] - sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em"
 #echo ""
-#echo "[Note]: Some files might have been moved to trash instead of permenantly deleting them. Use [trash-list] to show the files or [trash-restore] to recover the files."
+#echo "[Note]: Some files might have been moved to trash instead of permenantly deleting them. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
