@@ -117,7 +117,8 @@ echo "[INFO]: Almost done...!"
 echo ""
 usermod -s /bin/zsh $user
 echo ""
-betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
+betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png # For root user
+runuser -P -l $user -c 'betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png' # For normal user
 echo ""
 cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
 echo ""
