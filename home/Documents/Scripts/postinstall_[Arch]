@@ -5,17 +5,18 @@ user='teryakiisauce' # Your Home Dir username
 home_dir=/home/$user
 repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
 
-#echo "Before you run the script make sure to stop & read it if you haven't and edit the repo's dir path in required"
-#sleep 5
+# Display important alert
+echo "Before you run the script make sure to stop & read it if you haven't and edit the variables are desired... Will start within 15 seconds."
+sleep 15
 
-# INFO: Needs sudo privileges to run properly
+# INFO: Script needs sudo privileges to run properly
 if [[ "$EUID" -ne 0 ]]; then
 	echo "You need 'sudo' privileges to continue running the script."
 	exit
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included]
-#pacman -Syu --noconfirm && pacman -S --noconfirm alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui htop man-db nano neofetch neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting
+pacman -Syu --noconfirm && pacman -S --noconfirm alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui htop man-db nano neofetch neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting
 
 # Creating the necessary symbolic links
 echo ""
@@ -58,7 +59,7 @@ done
 
 # 5. .config Dir links
 mkdir -p $home_dir/.config # create the directory just in case
-configDirContents=("alacritty" "bspwm" "fontconfig" "gtk-2.0" "gtk3.0" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreen" "currentwm" "starship.toml")
+configDirContents=("alacritty" "bspwm" "fontconfig" "gtk-2.0" "gtk3.0" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
 for content in ${configDirContents[@]}; do
 	rm -rv $home_dir/.config/$content*
 	ln -sfv $repo_dir/home/.config/$content $home_dir/.config/$content
@@ -77,11 +78,37 @@ if [[ $(which yay) != '/usr/bin/yay' ]]; then
 	cd # return to home dir
 fi
 
-#echo ""
-#echo "[INFO]: Yay AUR helper has been installed for you, sorry I guess?"
-#echo ""
-#echo "[Done/ Final Step]: Copy/ Paste and run the following command(s):"
-#echo "yay -Syu --noconfirm && yay -S --noconfirm betterlockscreen picom-jonaburg-git"
-#echo "[OPTIONAL] - sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em"
-#echo ""
-#echo "[Note]: Some files might have been moved to trash instead of permenantly deleting them. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
+# Setting up final configurations
+usr_binDirContents=("flipwm" "postinstall_[Arch]" "switchDesktopMode")
+for content in ${usr_binDirContents[@]}; do
+	rm -rv /bin/$content*
+	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
+	# chown -R $user:$user /bin/$content
+done
+
+etcDirContents=("fonts")
+for content in ${etcDirContents[@]}; do
+	rm -rv /etc/$content*
+	ln -sfv $repo_dir/other/etc/$content /etc/$content
+	# chown -R $user:$user /etc/$content
+done
+
+usr_shareDirContents=("fonts")
+for content in ${usr_shareDirContents[@]}; do
+	rm -rv /usr/share/$content*
+	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
+	# chown -R $user:$user /usr/share/$content
+done
+
+usermod -s /bin/zsh $user
+fc-cache -fv
+betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
+
+echo ""
+echo "[INFO]: Yay AUR helper has been installed for you, sorry I guess?"
+echo ""
+echo "[Done/ Final Step]: Copy/ Paste and run the following command(s):"
+echo "yay -Syu --noconfirm && yay -S --noconfirm betterlockscreen picom-jonaburg-git"
+echo "[OPTIONAL] - sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em"
+echo ""
+echo "[Note]: Some files might have been moved to trash instead of permenantly deleting them. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
