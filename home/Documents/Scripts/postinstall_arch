@@ -16,7 +16,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included]
-pacman -Syu --noconfirm && pacman -S --noconfirm alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui go htop man-db nano neofetch neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting
+pacman -Syu --noconfirm && pacman -S --noconfirm alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui go htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting
 
 # Creating the necessary symbolic links
 echo ""
