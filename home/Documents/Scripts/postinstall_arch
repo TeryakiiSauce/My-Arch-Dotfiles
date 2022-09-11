@@ -16,7 +16,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included]
-pacman -Syu --noconfirm && pacman -S --noconfirm alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui go htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers networkmanager wpa_supplicant wireless_tools netctl dialog lvm2 alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui go gparted htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji vim starship sxhkd trash-cli zsh zsh-syntax-highlighting
 
 # Creating the necessary symbolic links
 echo ""
@@ -125,11 +125,26 @@ echo ""
 cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
 echo ""
 fc-cache -fv
+echo ""
+systemctl enable --now sshd # Enables SSH remote connections
+echo ""
+systemctl enable --now NetworkManager # Enables networking stuff
+echo ""
+
+echo "Read the following information, it's important!"
+sleep 5
 
 echo ""
-echo "[OPTIONAL]: Copy/ Paste & run the following command(s):"
+echo "A. 1. Edit the file '/etc/mkinitcpio.conf': in HOOKS(), add 'lvm2' after 'block' option"
+echo "A. 2. Run the command: sudo mkinitcpio -p linux (or linux-lts)"
+
+echo ""
+echo "B. [OPTIONAL]: Copy/ Paste & run the following command(s):"
 echo "sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em"
+
 echo ""
 echo "[NOTE]: Some files might have been moved to trash instead of being permenantly deleted. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
+
+echo ""
 echo "[Success]: Done, have a nice day <3 ^_^"
 echo ""
