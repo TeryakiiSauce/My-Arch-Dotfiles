@@ -16,7 +16,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers networkmanager wpa_supplicant wireless_tools netctl dialog lvm2 alacritty amd-ucode intel-ucode base bspwm discord efibootmgr firefox git gitui go gparted htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji vim starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter # Uncomment the extra packages if needed
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers networkmanager wpa_supplicant wireless_tools netctl dialog lvm2 alacritty amd-ucode intel-ucode bspwm discord efibootmgr firefox git gitui go gparted htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji vim starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter # Uncomment the extra packages if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'
 # *Note: for lightdm: run this command once installed: 'systemctl enable lightdm'
 
@@ -130,7 +130,7 @@ fc-cache -fv
 echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
-systemctl enable --now NetworkManager # Enables networking stuff
+#systemctl enable --now NetworkManager # Enables networking stuff
 echo ""
 
 echo "Read the following information, it's important!"
