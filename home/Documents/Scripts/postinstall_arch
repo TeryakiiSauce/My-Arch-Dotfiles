@@ -130,6 +130,10 @@ fc-cache -fv
 echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
+systemctl disable lightdm
+echo ""
+systemctl disable gdm
+echo ""
 #systemctl enable --now NetworkManager # Enables networking stuff
 #echo ""
 
