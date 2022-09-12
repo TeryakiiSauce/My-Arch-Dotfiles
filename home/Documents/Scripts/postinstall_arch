@@ -16,7 +16,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers networkmanager wpa_supplicant wireless_tools netctl dialog lvm2 alacritty amd-ucode intel-ucode bspwm discord efibootmgr firefox git gitui go gparted htop man-db nano neofetch net-tools neovim nitrogen ntfs-3g numlockx openssh papirus-icon-theme pavucontrol pipewire pipewire-pulse polybar ranger reflector rofi rofimoji vim starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter # Uncomment the extra packages if needed
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter # Uncomment the extra packages if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'
 # *Note: for lightdm: run this command once installed: 'systemctl enable lightdm'
 
@@ -122,7 +122,7 @@ echo "[INFO]: Almost done...!"
 echo ""
 usermod -s /bin/zsh $user
 echo ""
-runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png # For normal user
+runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
 echo ""
 cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
 echo ""
@@ -131,7 +131,7 @@ echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
 #systemctl enable --now NetworkManager # Enables networking stuff
-echo ""
+#echo ""
 
 echo "Read the following information, it's important!"
 sleep 5
