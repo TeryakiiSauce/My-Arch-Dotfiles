@@ -136,6 +136,8 @@ echo ""
 #echo ""
 #systemctl enable --now NetworkManager # Enables networking stuff
 #echo ""
+switchDesktopMode -d gui # Runs my custom script to make GUI mode run by default
+echo ""
 
 echo "Read the following information, it's important!"
 sleep 5
