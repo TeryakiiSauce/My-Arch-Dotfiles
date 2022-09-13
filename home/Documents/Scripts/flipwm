@@ -1,15 +1,30 @@
 #!/bin/bash
 
-# Script to switch between bspwm & xfce4 (using 'startx')
+# Script to switch between different windows managers (using startx)
+# Usage: Pass the numbers from [1..3] (check below) as arguments to flipwm to the wanted window manager
 
-if [[ $(grep -i 'exec bspwm' ~/.config/currentwm) == 'exec bspwm' ]]
-then
-	# If we are in BSPWM, switch to xfce4
-	$(sed -i 's/exec bspwm/startxfce4/g' ~/.config/currentwm)
-	echo "Window manager for next login is set to: xfce4"
-else
-	# If we are in xfce4, switch to BSPWM
-	$(sed -i 's/startxfce4/exec bspwm/g' ~/.config/currentwm)
+# You can sort the numbering depending on what you want... (default values below)
+# 1 = BSPWM
+# 2 = Gnome
+# 3 = Xfce4
+
+echo "#!/bin/bash" > ~/.config/currentwm
+
+if [[ $1 -eq 1 ]]; then
+	echo "exec bspwm" >> ~/.config/currentwm
 	echo "Window manager for next login is set to: BSPWM"
+	
+elif [[ $1 -eq 2 ]]; then
+	echo "export XDG_SESSION_TYPE=x11" >> ~/.config/currentwm
+	echo "export GDK_BACKEND=x11" >> ~/.config/currentwm
+	echo "exec gnome-session" >> ~/.config/currentwm
+	echo "Window manager for next login is set to: Gnome"
+	
+elif [[ $1 -eq 3 ]]; then
+	echo "startxfce4" >> ~/.config/currentwm
+	echo "Window manager for next login is set to: Xfce4"
+	
+else
+	echo "Usage: Pass the numbers from [1..3] (check script) as arguments to flipwm to the wanted window manager"
 fi
 
