@@ -1,0 +1,32 @@
+===================
+
+EXTENSIONS
+
+To backup extensions:
+	Go to "~/.local/share/gnome-shell/" and copy the "extensions" folder to somewhere safe.
+
+To restore extensions:
+	1. Copy back the "extensions" folder to the same directory as above ("~/.local/share/gnome-shell/")
+	2. sudo chmod +rwx -v ~/.local/share/gnome-shell/extensions/
+	3. Press Alt+F2 and type 'r' then Enter to restart the GNOME SHELL.
+
+===================
+	
+GNOME TWEAKS
+
+To backup gnome tweaks:
+	dconf dump / > "tweaks backup.dconf"
+	
+	[ OR ]
+	
+	dconf dump / > "tweaks backup (leonardo-da-vinci).dconf"
+
+To restore gnome tweaks:
+	dconf load / < "tweaks backup.dconf"
+	
+	[ OR ]
+	
+	dconf load / < "tweaks backup (leonardo-da-vinci).dconf"
+
+===================
+
