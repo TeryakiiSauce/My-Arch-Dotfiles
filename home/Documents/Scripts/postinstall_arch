@@ -27,7 +27,7 @@ sleep 2
 echo ""
 
 # 1. Home Dir links
-homeDirContents=(".zshrc" ".bashrc" ".gtkrc-2.0" ".xinitrc")
+homeDirContents=(".zshrc" ".bashrc" ".xinitrc")
 for content in ${homeDirContents[@]}; do
 	rm -rv $home_dir/$content*
 	ln -sfv $repo_dir/home/$content $home_dir/$content
@@ -63,7 +63,7 @@ done
 
 # 5. .config Dir links
 runuser -u $user -- mkdir -p $home_dir/.config # create the directory just in case
-configDirContents=("alacritty" "bspwm" "fontconfig" "gtk-2.0" "gtk3.0" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
+configDirContents=("alacritty" "bspwm" "fontconfig" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
 for content in ${configDirContents[@]}; do
 	rm -rv $home_dir/.config/$content*
 	ln -sfv $repo_dir/home/.config/$content $home_dir/.config/$content
@@ -75,59 +75,59 @@ echo "[INFO]: Symbolic links created!"
 echo ""
 
 # Install yay if not found
-if [[ $(which yay) != '/usr/bin/yay' ]]; then
-	echo "[WARNING]: Yay is not installed, script will now proceed to install yay..."
-	echo ""
-	sleep 5
-	mkdir -v /yay-install/ # create temp dir to download yay
-	git clone https://aur.archlinux.org/yay-git.git /yay-install/
-	chown -R $user:$user /yay-install/
-	cd /yay-install/
-	runuser -u $user -- makepkg -si --noconfirm
-	rm -rv /yay-install/
-	echo ""
-fi
+#if [[ $(which yay) != '/usr/bin/yay' ]]; then
+#	echo "[WARNING]: Yay is not installed, script will now proceed to install yay..."
+#	echo ""
+#	sleep 5
+#	mkdir -v /yay-install/ # create temp dir to download yay
+#	git clone https://aur.archlinux.org/yay-git.git /yay-install/
+#	chown -R $user:$user /yay-install/
+#	cd /yay-install/
+#	runuser -u $user -- makepkg -si --noconfirm
+#	rm -rv /yay-install/
+#	echo ""
+#fi
 
-echo "[GOOD]: Yay AUR helper is found!"
-echo ""
-echo "Please proceed to install 'betterlockscreen' & 'picom-jonaburg-git'"
-sleep 2
-runuser -u $user -- yay -Syu --noconfirm
-runuser -u $user -- yay -S --noconfirm betterlockscreen picom-jonaburg-git
+#echo "[GOOD]: Yay AUR helper is found!"
+#echo ""
+#echo "Please proceed to install 'betterlockscreen' & 'picom-jonaburg-git'"
+#sleep 2
+#runuser -u $user -- yay -Syu --noconfirm
+#runuser -u $user -- yay -S --noconfirm betterlockscreen picom-jonaburg-git
 
 # Setting up final configurations
-usr_binDirContents=("flipwm" "postinstall_arch" "switchDesktopMode")
-for content in ${usr_binDirContents[@]}; do
-	rm -rv /bin/$content*
-	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
-	# chown -R $user:$user /bin/$content
-done
+#usr_binDirContents=("flipwm" "postinstall_arch" "switchDesktopMode")
+#for content in ${usr_binDirContents[@]}; do
+#	rm -rv /bin/$content*
+#	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
+#	# chown -R $user:$user /bin/$content
+#done
 
-etcDirContents=("fonts")
-for content in ${etcDirContents[@]}; do
-	rm -rv /etc/$content*
-	ln -sfv $repo_dir/other/etc/$content /etc/$content
-	# chown -R $user:$user /etc/$content
-done
+#etcDirContents=("fonts")
+#for content in ${etcDirContents[@]}; do
+#	rm -rv /etc/$content*
+#	ln -sfv $repo_dir/other/etc/$content /etc/$content
+#	# chown -R $user:$user /etc/$content
+#done
 
-usr_shareDirContents=("fonts")
-for content in ${usr_shareDirContents[@]}; do
-	rm -rv /usr/share/$content*
-	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
-	# chown -R $user:$user /usr/share/$content
-done
+#usr_shareDirContents=("fonts")
+#for content in ${usr_shareDirContents[@]}; do
+#	rm -rv /usr/share/$content*
+#	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
+#	# chown -R $user:$user /usr/share/$content
+#done
 
 echo ""
 echo "[INFO]: Almost done...!"
 echo ""
-usermod -s /bin/zsh $user
-echo ""
-runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
-echo ""
-cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
-echo ""
-fc-cache -fv
-echo ""
+#usermod -s /bin/zsh $user
+#echo ""
+#runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
+#echo ""
+#cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
+#echo ""
+#fc-cache -fv
+#echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
 #systemctl disable lightdm
@@ -136,8 +136,8 @@ echo ""
 #echo ""
 #systemctl enable --now NetworkManager # Enables networking stuff
 #echo ""
-switchDesktopMode -d gui # Runs my custom script to make GUI mode run by default
-echo ""
+#switchDesktopMode -d gui # Runs my custom script to make GUI mode run by default
+#echo ""
 
 echo "Read the following information, it's important!"
 sleep 5
