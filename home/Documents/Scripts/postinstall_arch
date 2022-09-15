@@ -4,6 +4,7 @@
 user='teryakiisauce' # Your username (for home dir below)
 home_dir=/home/$user
 repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
+cpu='intel' # Enter either 'intel' or 'amd' (all lowercase)
 
 # Display important alert
 echo "Before you run the script make sure to stop & read it if you haven't and edit the variables as desired... Will start within 15 seconds."
@@ -15,8 +16,32 @@ if [[ "$EUID" -ne 0 ]]; then
 	exit
 fi
 
+echo ""
+
+# Intel or AMD
+ucode=''
+# Deleting both just in case bc only one should exist at a time
+rm -vr /boot/amd-ucode*
+rm -vr /boot/intel-ucode*
+
+echo ""
+echo "CPU: [" $cpu "] - Press 'ctrl+c' if incorrect. Fix the script's variables & then rerun. Waiting for 10 seconds..."
+sleep 10
+echo ""
+
+if [[ $cpu == 'intel' ]]; then
+	ucode='intel-ucode'
+elif [[ $cpu == 'amd' ]]; then
+	ucode='amd-ucode'
+else
+	echo "Please read & adjust the script's variables at the top to make sure the script runs successfully..."
+	exit
+fi
+
+echo ""
+
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr $ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
 echo "=== [ Installations finished ] ==="
 #sleep 60
