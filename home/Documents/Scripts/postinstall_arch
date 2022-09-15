@@ -16,7 +16,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
 echo "=== [ Installations finished ] ==="
 #sleep 60
@@ -108,15 +108,15 @@ for content in ${usr_binDirContents[@]}; do
 	# chown -R $user:$user /bin/$content
 done
 
-usr_shareDirContents=("fonts")
-for content in ${usr_shareDirContents[@]}; do
-	rm -rv /usr/share/$content*
-	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
-	# chown -R $user:$user /usr/share/$content
-done
+#usr_shareDirContents=("fonts")
+#for content in ${usr_shareDirContents[@]}; do
+#	rm -rv /usr/share/$content*
+#	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
+#	# chown -R $user:$user /usr/share/$content
+#done
 
-fc-cache -fv
-echo ""
+#fc-cache -fv
+#echo ""
 
 #etcDirContents=("fonts")
 #for content in ${etcDirContents[@]}; do
@@ -145,16 +145,12 @@ echo ""
 #switchDesktopMode -d gui # Runs my custom script to make GUI mode run by default
 #echo ""
 
-echo "Read the following information, it's important!"
-sleep 5
+echo "Read the following information, it may be important."
+sleep 3
 
 echo ""
-echo "A. 1. Edit the file '/etc/mkinitcpio.conf': in HOOKS(), add 'lvm2' after 'block' option"
-echo "A. 2. Run the command: sudo mkinitcpio -p linux (or linux-lts)"
-
-echo ""
-echo "B. [OPTIONAL]: Copy/ Paste & run the following command(s):"
-echo "sudo pacman -S --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em"
+echo "1. Edit the file '/etc/mkinitcpio.conf': in HOOKS(), add 'lvm2' after 'block' option"
+echo "2. Run the command: sudo mkinitcpio -p linux (or linux-lts)"
 
 echo ""
 echo "[NOTE]: Some files might have been moved to trash instead of being permenantly deleted. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
