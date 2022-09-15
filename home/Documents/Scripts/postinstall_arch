@@ -101,51 +101,47 @@ runuser -u $user -- yay -Syu --noconfirm
 runuser -u $user -- yay -S --noconfirm betterlockscreen picom-jonaburg-git
 
 # Setting up final configurations
-usr_binDirContents=("flipwm" "postinstall_arch" "switchDesktopMode")
+usr_binDirContents=("flipwm" "postinstall_arch" "flipui")
 for content in ${usr_binDirContents[@]}; do
 	rm -rv /bin/$content*
 	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
 	# chown -R $user:$user /bin/$content
 done
 
-#usr_shareDirContents=("fonts")
-#for content in ${usr_shareDirContents[@]}; do
-#	rm -rv /usr/share/$content*
-#	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
-#	# chown -R $user:$user /usr/share/$content
-#done
+fontsDirContents=("DOWNLOADED")
+for content in ${fontsDirContents[@]}; do
+	rm -rv /usr/share/fonts/$content*
+	ln -sfv $repo_dir/other/usr/share/fonts.downloaded/$content /usr/share/fonts/$content
+	#chown -R $user:$user /usr/share/$content
+done
 
-#fc-cache -fv
-#echo ""
-
-#etcDirContents=("fonts")
-#for content in ${etcDirContents[@]}; do
-#	rm -rv /etc/$content*
-#	ln -sfv $repo_dir/other/etc/$content /etc/$content
-#	# chown -R $user:$user /etc/$content
-#done
+fc-cache -rfv
 
 echo ""
 echo "[INFO]: Almost done...!"
 echo ""
-#usermod -s /bin/zsh $user
-#echo ""
-#runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
-#echo ""
-#cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
-#echo ""
+
+usermod -s /bin/zsh $user
+echo ""
+runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
+echo ""
+cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
+echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
+flipui -d gui # Runs my custom script to make GUI mode run by default
+echo ""
+
+# Uncomment the stuff below if needed
+
 #systemctl disable lightdm
 #echo ""
 #systemctl disable gdm
 #echo ""
 #systemctl enable --now NetworkManager # Enables networking stuff
 #echo ""
-#switchDesktopMode -d gui # Runs my custom script to make GUI mode run by default
-#echo ""
 
-echo "Read the following information, it may be important."
+echo "Read the following information, it may be *important*."
 sleep 3
 
 echo ""
@@ -158,3 +154,4 @@ echo "[NOTE]: Some files might have been moved to trash instead of being permena
 echo ""
 echo "[Success]: Done, have a nice day <3 ^_^"
 echo ""
+

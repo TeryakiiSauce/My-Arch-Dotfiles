@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Description: Script to allow users to switch to CLI or GUI mode
-# Usage: switchDesktopMode [-d] [gui]/[cli]
-#		 - The [-d] means: set mode as 'default' during boot - OPTIONAL
+# Usage: flipui [-d] [gui]/[cli]
+#	 - The [-d] means: set mode as 'default' during boot - OPTIONAL
 
 # Used for checking which mode is currently active
 isGUI_active=$(systemctl is-active graphical.target); # returns either 'active' or 'inactive'
@@ -46,7 +46,7 @@ then
 			echo "Switching to CLI mode from GUI mode will result in a BLANK SCREEN...!";
 			echo "";
 			echo "* To set default mode during boot run:";
-			echo "	switchDesktopMode -d gui";
+			echo "	flipui -d gui";
 			echo "	reboot";
 			echo "";
 			echo "* To temporarily switch to CLI mode, use the following keyboard shortcut:";
@@ -83,17 +83,17 @@ then
 			echo "Success: The next time your system reboots, you'll be using the GUI...";
 			
 		else
-			echo "Usage: switchDesktopMode [-d] gui/cli";
+			echo "Usage: flipui [-d] gui/cli";
 			echo "	- The [-d] means: set mode as 'default' during boot - OPTIONAL";
 		fi
 	else
-		echo "Usage: switchDesktopMode [-d] gui/cli";
+		echo "Usage: flipui [-d] gui/cli";
 		echo "	- The [-d] means: set mode as 'default' during boot - OPTIONAL";
 	fi
 else
 	#echo "Please pass either 'gui' or 'cli' as parameters...";
 	#echo "Optional argument: [-d] for setting as default.";
-	echo "Usage: switchDesktopMode [-d] gui/cli";
+	echo "Usage: flipui [-d] gui/cli";
 	echo "	- The [-d] means: set mode as 'default' during boot - OPTIONAL";
 fi
 
