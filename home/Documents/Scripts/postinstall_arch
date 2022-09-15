@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Edit the following values according to your case
-user='teryakiisauce' # Your Home Dir username
+user='teryakiisauce' # Your username (for home dir below)
 home_dir=/home/$user
 repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
 
@@ -16,7 +16,12 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter # Uncomment the extra packages if needed
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr amd-ucode intel-ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+
+echo "=== [ Installations finished ] ==="
+#sleep 60
+
+# Uncomment the extra packages above if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'
 # *Note: for lightdm: run this command once installed: 'systemctl enable lightdm'
 
@@ -75,46 +80,49 @@ echo "[INFO]: Symbolic links created!"
 echo ""
 
 # Install yay if not found
-#if [[ $(which yay) != '/usr/bin/yay' ]]; then
-#	echo "[WARNING]: Yay is not installed, script will now proceed to install yay..."
-#	echo ""
-#	sleep 5
-#	mkdir -v /yay-install/ # create temp dir to download yay
-#	git clone https://aur.archlinux.org/yay-git.git /yay-install/
-#	chown -R $user:$user /yay-install/
-#	cd /yay-install/
-#	runuser -u $user -- makepkg -si --noconfirm
-#	rm -rv /yay-install/
-#	echo ""
-#fi
+if [[ $(which yay) != '/usr/bin/yay' ]]; then
+	echo "[WARNING]: Yay is not installed, script will now proceed to install yay..."
+	echo ""
+	sleep 5
+	mkdir -v /yay-install/ # create temp dir to download yay
+	git clone https://aur.archlinux.org/yay-git.git /yay-install/
+	chown -R $user:$user /yay-install/
+	cd /yay-install/
+	runuser -u $user -- makepkg -si --noconfirm
+	rm -rv /yay-install/
+	echo ""
+fi
 
-#echo "[GOOD]: Yay AUR helper is found!"
-#echo ""
-#echo "Please proceed to install 'betterlockscreen' & 'picom-jonaburg-git'"
-#sleep 2
-#runuser -u $user -- yay -Syu --noconfirm
-#runuser -u $user -- yay -S --noconfirm betterlockscreen picom-jonaburg-git
+echo "[GOOD]: Yay AUR helper is found!"
+echo ""
+echo "Please proceed to install 'betterlockscreen' & 'picom-jonaburg-git'"
+sleep 2
+runuser -u $user -- yay -Syu --noconfirm
+runuser -u $user -- yay -S --noconfirm betterlockscreen picom-jonaburg-git
 
 # Setting up final configurations
-#usr_binDirContents=("flipwm" "postinstall_arch" "switchDesktopMode")
-#for content in ${usr_binDirContents[@]}; do
-#	rm -rv /bin/$content*
-#	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
-#	# chown -R $user:$user /bin/$content
-#done
+usr_binDirContents=("flipwm" "postinstall_arch" "switchDesktopMode")
+for content in ${usr_binDirContents[@]}; do
+	rm -rv /bin/$content*
+	ln -sfv $repo_dir/home/Documents/Scripts/$content /bin/$content
+	# chown -R $user:$user /bin/$content
+done
+
+usr_shareDirContents=("fonts")
+for content in ${usr_shareDirContents[@]}; do
+	rm -rv /usr/share/$content*
+	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
+	# chown -R $user:$user /usr/share/$content
+done
+
+fc-cache -fv
+echo ""
 
 #etcDirContents=("fonts")
 #for content in ${etcDirContents[@]}; do
 #	rm -rv /etc/$content*
 #	ln -sfv $repo_dir/other/etc/$content /etc/$content
 #	# chown -R $user:$user /etc/$content
-#done
-
-#usr_shareDirContents=("fonts")
-#for content in ${usr_shareDirContents[@]}; do
-#	rm -rv /usr/share/$content*
-#	ln -sfv $repo_dir/other/usr/share/$content /usr/share/$content
-#	# chown -R $user:$user /usr/share/$content
 #done
 
 echo ""
@@ -125,8 +133,6 @@ echo ""
 #runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
 #echo ""
 #cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
-#echo ""
-#fc-cache -fv
 #echo ""
 systemctl enable --now sshd # Enables SSH remote connections
 echo ""
