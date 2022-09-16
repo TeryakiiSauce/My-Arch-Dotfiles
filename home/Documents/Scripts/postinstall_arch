@@ -18,7 +18,7 @@ fi
 
 echo ""
 
-# Intel or AMD
+# Intel or AMD CPU
 ucode=''
 # Deleting both just in case bc only one should exist at a time
 rm -vr /boot/amd-ucode*
@@ -40,15 +40,13 @@ fi
 
 echo ""
 
-# Installs required software [Proprietary AMD/ NVIDIA GPU drivers not included] [includes Intel/ AMD OSS GPU drivers]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog lvm2 efibootmgr os-prober $ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em # pipewire pipewire-pulse networkmanager wpa_supplicant wireless_tools netctl virtualbox-guest-utils xf86-video-vmware xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
-
-echo "=== [ Installations finished ] ==="
-#sleep 60
+# Installs required software [installs ONLY Intel/ AMD Open-Source GPU drivers; Proprietary AMD/ NVIDIA GPU drivers NOT installed]
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog efibootmgr os-prober $ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em networkmanager dhcpcd iwd wpa_supplicant wireless_tools netctl # pipewire pipewire-pulse virtualbox-guest-utils xf86-video-vmware gnome xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
 # Uncomment the extra packages above if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'
-# *Note: for lightdm: run this command once installed: 'systemctl enable lightdm'
+
+echo "=== [ Installations finished ] ==="
 
 # Creating the necessary symbolic links
 echo ""
@@ -158,22 +156,14 @@ flipui -d gui # Runs my custom script to make GUI mode run by default
 echo ""
 
 # Uncomment the stuff below if needed
-
+#
 #systemctl disable lightdm
 #echo ""
 #systemctl disable gdm
 #echo ""
-#systemctl enable --now NetworkManager # Enables networking stuff
-#echo ""
-
-echo "Read the following information, it may be *important*."
-sleep 3
-
+systemctl enable --now NetworkManager
 echo ""
-echo "1. Edit the file '/etc/mkinitcpio.conf': in HOOKS(), add 'lvm2' after 'block' option"
-echo "2. Run the command: sudo mkinitcpio -p linux (or linux-lts)"
 
-echo ""
 echo "[NOTE]: Some files might have been moved to trash instead of being permenantly deleted. Use [sudo trash-list] to show the files or [sudo trash-restore] to recover the files."
 
 echo ""
