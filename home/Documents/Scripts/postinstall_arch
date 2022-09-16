@@ -15,8 +15,11 @@ if [[ "$EUID" -ne 0 ]]; then
 	echo "You need 'sudo' privileges to continue running the script."
 	exit
 fi
-
 echo ""
+
+# Create group and add user to the group
+groupadd $user
+usermod -a -G $user $user
 
 # Intel or AMD CPU
 ucode=''
@@ -46,6 +49,7 @@ pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-hea
 # Uncomment the extra packages above if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'
 
+echo ""
 echo "=== [ Installations finished ] ==="
 
 # Creating the necessary symbolic links
