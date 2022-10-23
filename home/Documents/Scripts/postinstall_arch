@@ -44,7 +44,7 @@ fi
 echo ""
 
 # Installs required software [installs ONLY Intel/ AMD Open-Source GPU drivers; Proprietary AMD/ NVIDIA GPU drivers NOT installed]
-pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog efibootmgr os-prober $ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar brightnessctl ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji scrot starship sxhkd trash-cli zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em networkmanager dhcpcd iwd wpa_supplicant wireless_tools netctl # pipewire pipewire-pulse virtualbox-guest-utils xf86-video-vmware gnome xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
+pacman -Syu --noconfirm && pacman -S --noconfirm base base-devel linux linux-headers dialog efibootmgr os-prober $ucode go git gitui net-tools neovim man-db vim nano ntfs-3g numlockx htop openssh gparted firefox neofetch alacritty bspwm nitrogen polybar brightnessctl ranger pavucontrol discord papirus-icon-theme reflector rofi rofimoji scrot starship sxhkd trash-cli xorg-xset zsh zsh-syntax-highlighting xorg-server mesa noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-nerd-fonts-symbols-2048-em networkmanager dhcpcd iwd wpa_supplicant wireless_tools netctl # pipewire pipewire-pulse virtualbox-guest-utils xf86-video-vmware gnome xfce4 xfce4-goodies lightdm lightdm-gtk-greeter
 
 # Uncomment the extra packages above if needed
 # *Note: for virtual-guest-utils: run this command once installed: 'systemctl enable vboxservice'

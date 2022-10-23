@@ -146,3 +146,6 @@ XF86AudioMute
 XF86MonBrightness{up,down}
 	brightnessctl set 355{+,-}
 
+# Turn off display
+super + d
+	xset dpms force off
