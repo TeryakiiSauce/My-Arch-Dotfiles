@@ -9,9 +9,9 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Custom Aliases
-alias rr="cd ~/Documents/GitHub/My-Arch-Dotfiles/"       # cd to my GitHub main repo dir
-alias rh="cd ~/Documents/GitHub/My-Arch-Dotfiles/home/"  # cd to my GitHub repo 'home' dir
-alias ro="cd ~/Documents/GitHub/My-Arch-Dotfiles/other/" # cd to my GitHub repo 'other' dir
+alias rr="cd ~/Documents/GitHub/My-Arch-Dotfiles/"                          # cd to my GitHub main repo dir
+alias rh="cd ~/Documents/GitHub/My-Arch-Dotfiles/home/"                     # cd to my GitHub repo 'home' dir
+alias ro="cd ~/Documents/GitHub/My-Arch-Dotfiles/other/"                    # cd to my GitHub repo 'other' dir
 alias gs="git status"                                                       # show git status
 alias ga="git add . && echo \"All changes are now staged.\""                # add/stage all changed items using git
 alias gr="git restore --staged . && echo \"All changes are now unstaged.\"" # remove all staged items using git (use `grf` function to remove specfic file(s))
@@ -19,6 +19,11 @@ alias gf="git fetch"                                                        # fe
 alias gp="git push"                                                         # push changes to origin using git
 alias gl="git pull"                                                         # pull changes from origin using git
 alias gu="gitui"                                                            # runs gitui tui client
+
+# replace VIM with NeoVim
+alias vim="nvim"
+alias nv="nvim"
+alias v="nvim"
 # End of custom aliases
 
 # Custom Functions
