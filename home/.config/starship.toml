@@ -1,3 +1,5 @@
+add_newline = true
+
 [character]
 success_symbol = "👻 [➜](bold purple)"
 error_symbol = "😿 [➜](bold red)"
