@@ -4,7 +4,7 @@
 user='teryakiisauce' # Your username (for home dir below)
 home_dir=/home/$user
 repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
-cpu='intel' # Enter either 'intel' or 'amd' (all lowercase)
+cpu='intel'                                          # Enter either 'intel' or 'amd' (all lowercase)
 
 # Display important alert
 echo "Before you run the script make sure to stop & read it if you haven't and edit the variables as desired... Will start within 15 seconds."
@@ -68,7 +68,7 @@ done
 
 # 2. Pictures Dir links
 runuser -u $user -- mkdir $home_dir/Pictures # create the directory just in case
-picsDirContents=("Anime_Wallpapers" "ASCII_art" "Unused")
+picsDirContents=("anime-wallpapers" "ascii-art" "Unused")
 for content in ${picsDirContents[@]}; do
 	trash-put -fv $home_dir/Pictures/$content*
 	ln -sfv $repo_dir/home/Pictures/$content $home_dir/Pictures/$content
@@ -173,4 +173,3 @@ echo "[NOTE]: Some files might have been moved to trash instead of being permena
 echo ""
 echo "[Success]: Done, have a nice day <3 ^_^"
 echo ""
-
