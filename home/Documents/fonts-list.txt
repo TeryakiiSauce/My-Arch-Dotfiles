@@ -1,0 +1,8 @@
+[Nerd fonts can be downloaded too, they provide tons of icons]
+
+JetBrains Mono
+FiraCode
+Cascadia
+SAGA
+Sarasa Gothic
+AtkinsonHyperlegible (ATK)
