@@ -3,7 +3,7 @@
 # Edit the following values according to your case
 user='teryakiisauce' # Your username (for home dir below)
 home_dir=/home/$user
-repo_dir=$home_dir/Documents/GitHub/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
+repo_dir=$home_dir/Documents/git/My-Arch-Dotfiles # The path of "My-Arch-Dotfiles" repo
 cpu='intel'                                          # Enter either 'intel' or 'amd' (all lowercase)
 
 # Display important alert
@@ -68,7 +68,7 @@ done
 
 # 2. Pictures Dir links
 runuser -u $user -- mkdir $home_dir/Pictures # create the directory just in case
-picsDirContents=("anime-wallpapers" "ascii-art" "Unused")
+picsDirContents=("anime" "ascii-art")
 for content in ${picsDirContents[@]}; do
 	trash-put -fv $home_dir/Pictures/$content*
 	ln -sfv $repo_dir/home/Pictures/$content $home_dir/Pictures/$content
@@ -95,7 +95,8 @@ done
 
 # 5. .config Dir links
 runuser -u $user -- mkdir -p $home_dir/.config # create the directory just in case
-configDirContents=("alacritty" "bspwm" "fontconfig" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
+#configDirContents=("alacritty" "bspwm" "fontconfig" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
+configDirContents=("alacritty" "bspwm" "htop" "neofetch" "nitrogen" "openrazer" "picom" "polybar" "polychromatic" "ranger" "rofi" "sxhkd" "betterlockscreenrc" "currentwm" "starship.toml")
 for content in ${configDirContents[@]}; do
 	rm -rv $home_dir/.config/$content*
 	ln -sfv $repo_dir/home/.config/$content $home_dir/.config/$content
@@ -135,14 +136,14 @@ for content in ${usr_binDirContents[@]}; do
 	# chown -R $user:$user /bin/$content
 done
 
-fontsDirContents=("DOWNLOADED")
-for content in ${fontsDirContents[@]}; do
-	rm -rv /usr/share/fonts/$content*
-	ln -sfv $repo_dir/other/usr/share/fonts.downloaded/$content /usr/share/fonts/$content
+#fontsDirContents=("DOWNLOADED")
+#for content in ${fontsDirContents[@]}; do
+#	rm -rv /usr/share/fonts/$content*
+#	ln -sfv $repo_dir/other/usr/share/fonts.downloaded/$content /usr/share/fonts/$content
 	#chown -R $user:$user /usr/share/$content
 done
 
-fc-cache -rfv
+#fc-cache -rfv
 
 echo ""
 echo "[INFO]: Almost done...!"
@@ -150,7 +151,7 @@ echo ""
 
 usermod -s /bin/zsh $user
 echo ""
-runuser -u $user -- betterlockscreen -u $home_dir/Pictures/Anime_Wallpapers/ez4gdfx5fmo81.png
+runuser -u $user -- betterlockscreen -u $home_dir/Pictures/anime/W_0847.heic
 echo ""
 cp -v /etc/pacman.d/mirrorlist /etc/pacman.d/backup.mirrorlist && rm -rv /etc/pacman.d/mirrorlist* && ln -sfv $repo_dir/other/etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist
 echo ""
