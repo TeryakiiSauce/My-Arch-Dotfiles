@@ -1,4 +1,5 @@
 add_newline = true
+command_timeout = 10000 # 10 seconds
 
 [character]
 success_symbol = "👻 [➜](bold purple)"
@@ -6,85 +7,54 @@ error_symbol = "😿 [➜](bold red)"
 
 # Here is how you can shorten some long paths by text replacement
 [directory.substitutions]
-"Documents" = " "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Documents" = "📄 "
+"Downloads" = "📦 "
+"Music" = "🎵 "
+"Pictures" = "🖼️ "
 # Keep in mind that the order matters. For example:
-# "Important Documents" = "  "
+# "Important Documents" = " 📄! "
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
-"Important  " = "  "
-
-# Command Timeout Stuff
-[cmd_duration]
-min_time = 10000 # 10 seconds
+"Important 📄 " = " 📄! "
 
 [aws]
-symbol = "  "
-
-[buf]
-symbol = " "
+symbol = "☁️  "
 
 [c]
-symbol = " "
-
-[conda]
-symbol = " "
+symbol = "𝒄 "
 
 [dart]
-symbol = " "
+symbol = "🎯 "
 
 [directory]
-read_only = " "
-
-[docker_context]
-symbol = " "
+read_only = " 📂👀"
 
 [elixir]
-symbol = " "
-
-[elm]
-symbol = " "
+symbol = "🩸 "
 
 [git_branch]
-symbol = " "
+symbol = "🎋 "
 
 [golang]
-symbol = " "
-
-[haskell]
-symbol = " "
+symbol = "🏎️ "
 
 [hg_branch]
-symbol = " "
+symbol = "🎋 "
 
 [java]
-symbol = " "
-
-[julia]
-symbol = " "
+symbol = "☕️ "
 
 [memory_usage]
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
+symbol = "💾 "
 
 [nodejs]
-symbol = " "
+symbol = "⬡ "
 
 [package]
-symbol = " "
+symbol = "📦 "
 
 [python]
-symbol = " "
-
-[spack]
-symbol = "🅢 "
+symbol = "🐍 "
 
 [rust]
-symbol = " "
+symbol = "⚙️ "
